@@ -4,9 +4,9 @@
     <div class="absolute inset-0 bg-black/50 backdrop-blur-sm" @click="close"></div>
     
     <!-- Modal -->
-    <div class="relative bg-white rounded-3xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+    <div class="relative bg-white shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
       <!-- Header -->
-      <div class="sticky top-0 bg-gradient-to-r from-blue-600 to-indigo-600 px-8 py-6 flex items-center justify-between rounded-t-3xl">
+      <div class="sticky top-0 bg-gray-900 px-8 py-6 flex items-center justify-between">
         <h2 class="text-2xl font-bold text-white">Términos y Condiciones</h2>
         <button
           @click="close"
@@ -56,7 +56,7 @@
         <section>
           <h3 class="text-lg font-bold text-gray-900 mb-3">6. Contacto</h3>
           <p>
-            Para consultas sobre privacidad o términos, contáctanos en <a href="https://latitudmedia.cl" target="_blank" class="text-blue-600 hover:underline">latitudmedia.cl</a>
+            Para consultas sobre privacidad o términos, contáctanos en <a href="https://latitudmedia.cl" target="_blank" class="text-orange-600 hover:underline">latitudmedia.cl</a>
           </p>
         </section>
 
@@ -68,10 +68,10 @@
       </div>
 
       <!-- Footer del modal -->
-      <div class="border-t border-gray-200 px-8 py-4 rounded-b-3xl bg-gray-50 sticky bottom-0">
+      <div class="border-t border-gray-200 px-8 py-4 bg-gray-50 sticky bottom-0">
         <button
           @click="close"
-          class="w-full px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-semibold"
+          class="w-full px-6 py-3 bg-orange-500 text-white rounded-lg hover:bg-orange-600 transition-colors font-semibold"
         >
           Entendido
         </button>

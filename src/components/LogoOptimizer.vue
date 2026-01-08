@@ -1,13 +1,16 @@
 <template>
-  <div class="min-h-screen py-12 px-4 bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50">
-    <!-- Encabezado con diseño moderno -->
+  <div class="min-h-screen py-12 px-4 bg-stone-50">
     <div class="text-center mb-12 animate-fade-in">
-      <!-- Logo de la aplicación -->
       <div class="mb-6 flex justify-center">
-        <img src="../assets/optimiza.svg" alt="Optimizador de Logos para el Facturador Electrónico del SII Chile" class="h-24 w-auto drop-shadow-2xl hover:scale-105 transition-transform duration-300" />
+        <img 
+          src="../assets/optimiza.svg" 
+          alt="Optimizador de Logos para el Facturador Electrónico del SII Chile" 
+          class="h-16 w-auto drop-shadow-lg hover:scale-105 transition-transform duration-300 cursor-pointer" 
+          @click="resetImage"
+          title="Volver al inicio"
+        />
       </div>
       
-      <!-- Texto para SEO - Visualmente oculto pero accesible para buscadores -->
       <h1 class="sr-only">Optimizador de Logos SII Chile</h1>
       <p class="sr-only">Ajusta tu logo según los requisitos del Servicio de Impuestos Internos de Chile para el facturador electrónico</p>
       
@@ -15,22 +18,19 @@
         Ajusta tu logo según los requisitos del Servicio de Impuestos Internos
       </p>
       
-      <!-- Badge con requisitos - Glassmorphism -->
-      <div class="inline-block backdrop-blur-xl bg-white/70 border border-white/50 rounded-2xl px-8 py-4 shadow-2xl">
+      <div class="inline-block bg-white border border-stone-200 rounded-lg px-8 py-4 shadow-sm">
         <div class="flex items-center gap-3">
-          <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg class="w-5 h-5 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
           </svg>
           <span class="text-sm font-medium text-gray-700">
-            <span class="font-bold text-blue-900">Requisitos:</span> 120×120px • JPG • Máx. 10KB
+            <span class="font-bold text-gray-900">Requisitos:</span> 120×120px • JPG • Máx. 10KB
           </span>
         </div>
       </div>
     </div>
 
-    <!-- Contenedor principal con glassmorphism -->
     <div class="max-w-6xl mx-auto">
-      <!-- Área de carga con diseño moderno -->
       <div v-if="!imageLoaded" class="mb-8 animate-slide-up">
         <div
           @drop.prevent="handleDrop"
@@ -38,21 +38,19 @@
           @dragenter.prevent="isDragging = true"
           @dragleave.prevent="isDragging = false"
           :class="[
-            'relative overflow-hidden backdrop-blur-xl rounded-3xl p-16 text-center transition-all duration-300 cursor-pointer group',
+            'relative overflow-hidden rounded-lg p-16 text-center transition-all duration-300 cursor-pointer',
             isDragging 
-              ? 'bg-gradient-to-br from-blue-500/30 to-indigo-500/30 border-2 border-blue-500 scale-105 shadow-2xl' 
-              : 'bg-white/60 border-2 border-dashed border-gray-300 hover:border-blue-400 hover:bg-white/80 shadow-xl hover:shadow-2xl'
+              ? 'bg-orange-50 border-2 border-orange-500 shadow-lg' 
+              : 'bg-white border-2 border-dashed border-stone-300 hover:border-orange-400 hover:bg-stone-50 shadow-sm hover:shadow-md'
           ]"
           @click="triggerFileInput"
         >
-          <!-- Patrón de fondo decorativo -->
           <div class="absolute inset-0 opacity-5">
             <div class="absolute inset-0" style="background-image: radial-gradient(circle, #3b82f6 1px, transparent 1px); background-size: 20px 20px;"></div>
           </div>
           
           <div class="relative space-y-6">
-            <!-- Icono con animación -->
-            <div class="inline-flex items-center justify-center w-24 h-24 rounded-full bg-gradient-to-br from-blue-500 to-indigo-600 shadow-xl transform transition-transform group-hover:scale-110 group-hover:rotate-3">
+            <div class="inline-flex items-center justify-center w-24 h-24 rounded-full bg-orange-500 shadow-lg transform transition-transform group-hover:scale-105">
               <svg
                 class="w-12 h-12 text-white"
                 fill="none"
@@ -114,10 +112,9 @@
         </div>
       </div>
 
-      <!-- Área de edición con layout de dos columnas -->
       <div v-if="imageLoaded && !optimizedImage" class="animate-slide-up">
-        <div class="backdrop-blur-xl bg-white/70 rounded-3xl shadow-2xl border border-white/50 overflow-hidden">
-          <div class="bg-gradient-to-r from-blue-600 to-indigo-600 px-8 py-6">
+        <div class="bg-white rounded-lg shadow-md border border-stone-200 overflow-hidden">
+          <div class="bg-gray-900 px-8 py-6">
             <h2 class="text-2xl font-bold text-white flex items-center gap-3">
               <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.121 14.121L19 19m-7-7l7-7m-7 7l-2.879 2.879M12 12L9.121 9.121m0 5.758a3 3 0 10-4.243 4.243 3 3 0 004.243-4.243zm0-5.758a3 3 0 10-4.243-4.243 3 3 0 004.243 4.243z" />
@@ -130,21 +127,21 @@
           </div>
           
           <div class="p-8">
-            <div class="rounded-2xl overflow-hidden shadow-inner bg-gray-100/50 mb-8">
+            <div class="max-w-lg mx-auto rounded-lg overflow-hidden shadow-inner bg-gray-100/50 mb-8">
               <img ref="cropperImage" :src="originalImageUrl" alt="Imagen para recortar" />
             </div>
 
             <div class="flex gap-4">
               <button
                 @click="resetImage"
-                class="flex-1 px-8 py-4 rounded-xl border-2 border-gray-300 text-gray-700 font-semibold hover:bg-gray-50 hover:border-gray-400 transition-all duration-200 shadow-lg hover:shadow-xl"
+                class="flex-1 px-8 py-4 rounded-lg border border-stone-300 text-gray-700 font-medium hover:bg-stone-50 transition-all duration-200"
               >
                 Cancelar
               </button>
               <button
                 @click="optimizeImage"
                 :disabled="isProcessing"
-                class="flex-1 px-8 py-4 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-bold hover:from-blue-700 hover:to-indigo-700 transition-all duration-200 disabled:from-gray-400 disabled:to-gray-500 disabled:cursor-not-allowed shadow-xl hover:shadow-2xl flex items-center justify-center gap-3 transform hover:scale-105 active:scale-95"
+                class="flex-1 px-8 py-4 rounded-lg bg-orange-500 text-white font-semibold hover:bg-orange-600 transition-all duration-200 disabled:bg-gray-400 disabled:cursor-not-allowed shadow-sm hover:shadow-md flex items-center justify-center gap-3"
               >
                 <span v-if="isProcessing" class="inline-block animate-spin rounded-full h-5 w-5 border-3 border-white border-t-transparent"></span>
                 <svg v-else class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -157,11 +154,9 @@
         </div>
       </div>
 
-      <!-- Resultado optimizado - Layout de dos columnas -->
       <div v-if="optimizedImage" class="animate-slide-up">
-        <div class="backdrop-blur-xl bg-white/70 rounded-3xl shadow-2xl border border-white/50 overflow-hidden">
-          <!-- Header de éxito -->
-          <div class="bg-gradient-to-r from-green-500 to-emerald-600 px-8 py-6">
+        <div class="bg-white rounded-lg shadow-md border border-stone-200 overflow-hidden">
+          <div class="bg-green-600 px-8 py-6">
             <div class="flex items-center gap-3">
               <div class="w-12 h-12 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center">
                 <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -179,9 +174,7 @@
             </div>
           </div>
 
-          <!-- Grid de dos columnas -->
           <div class="grid lg:grid-cols-2 gap-8 p-8">
-            <!-- Columna izquierda: Previsualización -->
             <div>
               <h3 class="text-lg font-bold text-gray-800 mb-4 flex items-center gap-2">
                 <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -190,7 +183,7 @@
                 </svg>
                 Vista previa
               </h3>
-              <div class="backdrop-blur-sm bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl p-8 border-2 border-gray-200 shadow-inner">
+              <div class="bg-stone-50 rounded-lg p-8 border border-stone-200">
                 <div class="bg-white rounded-xl p-6 shadow-lg inline-block">
                   <img
                     :src="optimizedImage"
@@ -203,7 +196,6 @@
               </div>
             </div>
 
-            <!-- Columna derecha: Especificaciones -->
             <div>
               <h3 class="text-lg font-bold text-gray-800 mb-4 flex items-center gap-2">
                 <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -212,8 +204,7 @@
                 Especificaciones técnicas
               </h3>
               <div class="space-y-3">
-                <!-- Badge de dimensiones -->
-                <div class="backdrop-blur-sm bg-gradient-to-r from-green-50 to-emerald-50 rounded-xl p-4 border-2 border-green-200 shadow-lg">
+                <div class="bg-green-50 rounded-lg p-4 border border-green-200">
                   <div class="flex items-center justify-between">
                     <div class="flex items-center gap-3">
                       <div class="w-10 h-10 rounded-full bg-green-500 flex items-center justify-center">
@@ -227,45 +218,41 @@
                   </div>
                 </div>
 
-                <!-- Badge de formato -->
-                <div class="backdrop-blur-sm bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl p-4 border-2 border-blue-200 shadow-lg">
+                <div class="bg-orange-50 rounded-lg p-4 border border-orange-200">
                   <div class="flex items-center justify-between">
                     <div class="flex items-center gap-3">
-                      <div class="w-10 h-10 rounded-full bg-blue-500 flex items-center justify-center">
+                      <div class="w-10 h-10 rounded-full bg-orange-500 flex items-center justify-center">
                         <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
                         </svg>
                       </div>
                       <span class="text-sm font-medium text-gray-700">Formato</span>
                     </div>
-                    <span class="text-base font-bold text-blue-700 bg-blue-100 px-4 py-1 rounded-full">JPG</span>
+                    <span class="text-base font-bold text-orange-700 bg-orange-100 px-4 py-1 rounded-full">JPG</span>
                   </div>
                 </div>
 
-                <!-- Badge de tamaño con indicador -->
-                <div class="backdrop-blur-sm bg-gradient-to-r from-purple-50 to-pink-50 rounded-xl p-4 border-2 border-purple-200 shadow-lg">
+                <div class="bg-stone-50 rounded-lg p-4 border border-stone-200">
                   <div class="flex items-center justify-between mb-2">
                     <div class="flex items-center gap-3">
-                      <div class="w-10 h-10 rounded-full bg-purple-500 flex items-center justify-center">
+                      <div class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center">
                         <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
                         </svg>
                       </div>
                       <span class="text-sm font-medium text-gray-700">Peso del archivo</span>
                     </div>
-                    <span class="text-base font-bold text-purple-700 bg-purple-100 px-4 py-1 rounded-full">{{ fileSizeKB }} KB</span>
+                    <span class="text-base font-bold text-gray-700 bg-gray-100 px-4 py-1 rounded-full">{{ fileSizeKB }} KB</span>
                   </div>
-                  <!-- Barra de progreso -->
                   <div class="w-full bg-gray-200 rounded-full h-2 overflow-hidden">
                     <div 
-                      class="bg-gradient-to-r from-purple-500 to-pink-500 h-2 rounded-full transition-all duration-500"
+                      class="bg-orange-500 h-2 rounded-full transition-all duration-500"
                       :style="{ width: (parseFloat(fileSizeKB) / 10 * 100) + '%' }"
                     ></div>
                   </div>
                   <p class="text-xs text-gray-500 text-center mt-1">{{ (parseFloat(fileSizeKB) / 10 * 100).toFixed(1) }}% del límite (10 KB)</p>
                 </div>
 
-                <!-- Info de optimización -->
                 <div v-if="compressionAttempts > 0" class="text-center p-3 bg-gray-100 rounded-lg">
                   <p class="text-xs text-gray-600 flex items-center justify-center gap-2">
                     <svg class="w-4 h-4 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -278,12 +265,11 @@
             </div>
           </div>
 
-          <!-- Botones de acción -->
           <div class="px-8 pb-8 pt-4">
             <div class="grid grid-cols-2 gap-4">
               <button
                 @click="resetImage"
-                class="px-8 py-4 rounded-xl border-2 border-gray-300 text-gray-700 font-semibold hover:bg-gray-50 hover:border-gray-400 transition-all duration-200 shadow-lg hover:shadow-xl flex items-center justify-center gap-2"
+                class="px-8 py-4 rounded-lg border border-stone-300 text-gray-700 font-medium hover:bg-stone-50 transition-all duration-200 flex items-center justify-center gap-2"
               >
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
@@ -292,7 +278,7 @@
               </button>
               <button
                 @click="downloadImage"
-                class="px-8 py-4 rounded-xl bg-gradient-to-r from-green-500 to-emerald-600 text-white font-bold hover:from-green-600 hover:to-emerald-700 transition-all duration-200 shadow-xl hover:shadow-2xl flex items-center justify-center gap-3 transform hover:scale-105 active:scale-95"
+                class="px-8 py-4 rounded-lg bg-green-600 text-white font-semibold hover:bg-green-700 transition-all duration-200 shadow-sm hover:shadow-md flex items-center justify-center gap-3"
               >
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
@@ -304,23 +290,21 @@
         </div>
       </div>
 
-      <!-- Mensaje de error con diseño moderno -->
       <div v-if="errorMessage" class="mt-6 animate-shake">
-        <div class="backdrop-blur-xl bg-red-500/90 rounded-2xl p-5 shadow-2xl border border-red-400">
+        <div class="bg-red-50 rounded-lg p-5 border border-red-200">
           <div class="flex items-center gap-3">
-            <div class="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center flex-shrink-0">
-              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div class="w-10 h-10 rounded-full bg-red-100 flex items-center justify-center flex-shrink-0">
+              <svg class="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
             </div>
-            <p class="text-white font-medium">{{ errorMessage }}</p>
+            <p class="text-red-800 font-medium">{{ errorMessage }}</p>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Footer -->
-    <div class="mt-16 pt-8 border-t border-gray-200/40">
+    <div class="mt-16 pt-8 border-t border-stone-200">
       <div class="max-w-6xl mx-auto px-4 py-8 text-center text-gray-600">
         <p class="mb-2 flex items-center justify-center gap-1">
           Creado con 
@@ -328,20 +312,19 @@
             <path d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"></path>
           </svg>
           por 
-          <a href="https://latitudmedia.cl" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-700 hover:underline font-semibold">
+          <a href="https://latitudmedia.cl" target="_blank" rel="noopener noreferrer" class="text-orange-600 hover:text-orange-700 hover:underline font-semibold">
             Latitud Media
           </a>
         </p>
         <button
           @click="showTerms = true"
-          class="text-sm text-gray-500 hover:text-blue-600 hover:underline transition-colors mt-2"
+          class="text-sm text-gray-500 hover:text-orange-600 hover:underline transition-colors mt-2"
         >
           Términos y Condiciones
         </button>
       </div>
     </div>
 
-    <!-- Terms Modal -->
     <TermsModal :isOpen="showTerms" @close="showTerms = false" />
   </div>
 </template>
