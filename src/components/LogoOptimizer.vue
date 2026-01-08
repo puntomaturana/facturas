@@ -318,12 +318,38 @@
         </div>
       </div>
     </div>
+
+    <!-- Footer -->
+    <div class="mt-16 pt-8 border-t border-gray-200/40">
+      <div class="max-w-6xl mx-auto px-4 py-8 text-center text-gray-600">
+        <p class="mb-2 flex items-center justify-center gap-1">
+          Creado con 
+          <svg class="w-5 h-5 text-red-500" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"></path>
+          </svg>
+          por 
+          <a href="https://latitudmedia.cl" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-700 hover:underline font-semibold">
+            Latitud Media
+          </a>
+        </p>
+        <button
+          @click="showTerms = true"
+          class="text-sm text-gray-500 hover:text-blue-600 hover:underline transition-colors mt-2"
+        >
+          Términos y Condiciones
+        </button>
+      </div>
+    </div>
+
+    <!-- Terms Modal -->
+    <TermsModal :isOpen="showTerms" @close="showTerms = false" />
   </div>
 </template>
 
 <script setup>
 import { ref, onBeforeUnmount } from 'vue'
 import Cropper from 'cropperjs'
+import TermsModal from './TermsModal.vue'
 import 'cropperjs/dist/cropper.css'
 
 // Referencias
@@ -337,6 +363,7 @@ const fileSizeKB = ref(0)
 const isProcessing = ref(false)
 const errorMessage = ref('')
 const compressionAttempts = ref(0)
+const showTerms = ref(false)
 
 let cropper = null
 
