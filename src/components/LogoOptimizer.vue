@@ -431,17 +431,32 @@ const optimizeImage = async () => {
     const canvas = cropper.getCroppedCanvas({
       width: 120,
       height: 120,
+      fillColor: '#ffffff',
       imageSmoothingEnabled: true,
       imageSmoothingQuality: 'high',
     })
 
     // Convertir a blob y optimizar
-    await compressToTarget(canvas)
+    await compressToTarget(flattenCanvasForJpeg(canvas))
   } catch (error) {
     showError('Error al procesar la imagen: ' + error.message)
   } finally {
     isProcessing.value = false
   }
+}
+
+// JPG no soporta transparencia: aplanar PNG/GIF transparentes sobre blanco.
+const flattenCanvasForJpeg = (sourceCanvas) => {
+  const canvas = document.createElement('canvas')
+  canvas.width = sourceCanvas.width
+  canvas.height = sourceCanvas.height
+
+  const context = canvas.getContext('2d')
+  context.fillStyle = '#ffffff'
+  context.fillRect(0, 0, canvas.width, canvas.height)
+  context.drawImage(sourceCanvas, 0, 0)
+
+  return canvas
 }
 
 // Comprimir imagen hasta que sea menor a 10KB
