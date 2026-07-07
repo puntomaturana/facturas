@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://facturas.latitudmedia.cl/sitemap.xml
+LLMs: https://facturas.latitudmedia.cl/llms.txt

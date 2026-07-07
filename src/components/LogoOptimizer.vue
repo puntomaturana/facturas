@@ -3,7 +3,7 @@
     <div class="text-center mb-12 animate-fade-in">
       <div class="mb-6 flex justify-center">
         <img 
-          src="../assets/optimiza.svg" 
+          src="../assets/optimiza.png" 
           alt="Optimizador de Logos para el Facturador Electrónico del SII Chile" 
           class="h-16 w-auto drop-shadow-lg hover:scale-105 transition-transform duration-300 cursor-pointer" 
           @click="resetImage"
@@ -11,11 +11,12 @@
         />
       </div>
       
-      <h1 class="sr-only">Optimizador de Logos SII Chile</h1>
-      <p class="sr-only">Ajusta tu logo según los requisitos del Servicio de Impuestos Internos de Chile para el facturador electrónico</p>
+      <h1 class="text-3xl md:text-4xl font-bold text-gray-900 tracking-normal mb-4">
+        Optimiza tu logo para el facturador electrónico del SII
+      </h1>
       
       <p class="text-lg text-gray-600 max-w-2xl mx-auto mb-6">
-        Ajusta tu logo según los requisitos del Servicio de Impuestos Internos
+        Recorta y comprime tu logo para usarlo en facturas del SII Chile: 120×120 pixeles, formato JPG y menos de 10KB.
       </p>
       
       <div class="inline-block bg-white border border-stone-200 rounded-lg px-8 py-4 shadow-sm">
@@ -68,7 +69,7 @@
             
             <div>
               <p class="text-2xl text-gray-800 font-bold mb-2">
-                Arrastra tu logo aquí
+                Arrastra tu logo aquí para adaptarlo al SII
               </p>
               <p class="text-base text-gray-600">
                 o haz clic para seleccionar desde tu equipo
@@ -304,6 +305,117 @@
       </div>
     </div>
 
+    <section class="max-w-6xl mx-auto px-4 mt-16" aria-labelledby="guia-logo-sii">
+      <div class="grid lg:grid-cols-[1.1fr_0.9fr] gap-10 items-start">
+        <div>
+          <div class="bg-orange-50 border border-orange-200 rounded-lg p-5 mb-8">
+            <p class="text-sm font-semibold uppercase tracking-wider text-orange-700 mb-2">
+              Respuesta rápida
+            </p>
+            <p class="text-gray-800 leading-relaxed">
+              Para poner un logo en una factura del SII, prepara un JPG de 120×120 píxeles y menos de 10KB. Luego entra a Facturación Electrónica MIPYME, abre Administración, selecciona la actualización del logotipo de la empresa, sube la imagen y confirma el cambio.
+            </p>
+          </div>
+
+          <p class="text-sm font-semibold uppercase tracking-wider text-orange-700 mb-3">
+            Guía rápida
+          </p>
+          <h2 id="guia-logo-sii" class="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
+            Cómo preparar el logo para una factura del SII
+          </h2>
+          <div class="space-y-4 text-gray-700 leading-relaxed">
+            <p>
+              El facturador electrónico del Servicio de Impuestos Internos pide un archivo muy específico. Si el logo pesa demasiado, tiene otro formato o no es cuadrado, puede verse mal o no cargarse correctamente.
+            </p>
+            <p>
+              Esta herramienta toma tu imagen original, te permite elegir el encuadre y genera un JPG listo para subir al SII. No necesitas instalar programas ni ajustar medidas a mano.
+            </p>
+            <p>
+              Después de descargar el archivo, el cambio se realiza en el portal del SII: entra a Facturación Electrónica MIPYME, abre Administración y usa la opción de actualización del logotipo de la empresa.
+            </p>
+          </div>
+          <a
+            href="https://www.sii.cl/portales/mipyme/administracion_datos/Guia_Cambiar_Logo.html"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 mt-6 text-sm font-semibold text-orange-700 hover:text-orange-800 hover:underline"
+          >
+            Ver guía oficial del SII para cambiar el logo
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 17L17 7M17 7H8m9 0v9" />
+            </svg>
+          </a>
+        </div>
+
+        <div class="bg-white border border-stone-200 rounded-lg p-6 shadow-sm">
+          <h3 class="text-lg font-bold text-gray-900 mb-4">
+            Requisitos del logo SII
+          </h3>
+          <dl class="space-y-4">
+            <div class="flex items-center justify-between gap-4 border-b border-stone-100 pb-3">
+              <dt class="text-sm text-gray-600">Dimensiones</dt>
+              <dd class="text-sm font-semibold text-gray-900">120×120 px</dd>
+            </div>
+            <div class="flex items-center justify-between gap-4 border-b border-stone-100 pb-3">
+              <dt class="text-sm text-gray-600">Formato final</dt>
+              <dd class="text-sm font-semibold text-gray-900">JPG</dd>
+            </div>
+            <div class="flex items-center justify-between gap-4 border-b border-stone-100 pb-3">
+              <dt class="text-sm text-gray-600">Peso máximo</dt>
+              <dd class="text-sm font-semibold text-gray-900">10KB</dd>
+            </div>
+            <div class="flex items-center justify-between gap-4">
+              <dt class="text-sm text-gray-600">Uso habitual</dt>
+              <dd class="text-sm font-semibold text-gray-900 text-right">Factura electrónica SII</dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <section class="max-w-6xl mx-auto px-4 mt-14" aria-labelledby="preguntas-logo-sii">
+      <h2 id="preguntas-logo-sii" class="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
+        Preguntas frecuentes sobre el logo para facturas SII
+      </h2>
+      <div class="grid md:grid-cols-2 gap-4">
+        <article class="bg-white border border-stone-200 rounded-lg p-6 shadow-sm">
+          <h3 class="font-bold text-gray-900 mb-2">
+            Qué tamaño debe tener el logo para el SII?
+          </h3>
+          <p class="text-gray-700 leading-relaxed">
+            El archivo final debe quedar en 120×120 pixeles. Un formato cuadrado evita que el logo se deforme al aparecer en la factura.
+          </p>
+        </article>
+
+        <article class="bg-white border border-stone-200 rounded-lg p-6 shadow-sm">
+          <h3 class="font-bold text-gray-900 mb-2">
+            Cómo poner o cambiar el logo en la factura SII?
+          </h3>
+          <p class="text-gray-700 leading-relaxed">
+            Primero descarga el JPG optimizado. Luego entra a Facturación Electrónica MIPYME en el SII, abre Administración, selecciona la actualización del logotipo, indica el RUT de la empresa, sube la imagen y confirma el cambio.
+          </p>
+        </article>
+
+        <article class="bg-white border border-stone-200 rounded-lg p-6 shadow-sm">
+          <h3 class="font-bold text-gray-900 mb-2">
+            Sirve si mi logo está en PNG?
+          </h3>
+          <p class="text-gray-700 leading-relaxed">
+            Sí. Puedes cargar un PNG, JPG o GIF. La herramienta entrega un JPG con fondo blanco, listo para cumplir el formato requerido.
+          </p>
+        </article>
+
+        <article class="bg-white border border-stone-200 rounded-lg p-6 shadow-sm">
+          <h3 class="font-bold text-gray-900 mb-2">
+            La imagen se sube a un servidor?
+          </h3>
+          <p class="text-gray-700 leading-relaxed">
+            No. El recorte y la compresión se procesan en tu navegador. Tu imagen no se envía a Latitud Media para generar el archivo.
+          </p>
+        </article>
+      </div>
+    </section>
+
     <div class="mt-16 pt-8 border-t border-stone-200">
       <div class="max-w-6xl mx-auto px-4 py-8 text-center text-gray-600">
         <p class="mb-2 flex items-center justify-center gap-1">
@@ -325,15 +437,14 @@
       </div>
     </div>
 
-    <TermsModal :isOpen="showTerms" @close="showTerms = false" />
+    <TermsModal v-if="showTerms" :isOpen="showTerms" @close="showTerms = false" />
   </div>
 </template>
 
 <script setup>
-import { ref, onBeforeUnmount } from 'vue'
-import Cropper from 'cropperjs'
-import TermsModal from './TermsModal.vue'
-import 'cropperjs/dist/cropper.css'
+import { defineAsyncComponent, ref, onBeforeUnmount } from 'vue'
+
+const TermsModal = defineAsyncComponent(() => import('./TermsModal.vue'))
 
 // Referencias
 const fileInput = ref(null)
@@ -349,6 +460,19 @@ const compressionAttempts = ref(0)
 const showTerms = ref(false)
 
 let cropper = null
+let CropperConstructor = null
+
+const loadCropper = async () => {
+  if (!CropperConstructor) {
+    const [cropperModule] = await Promise.all([
+      import('cropperjs'),
+      import('cropperjs/dist/cropper.css'),
+    ])
+    CropperConstructor = cropperModule.default
+  }
+
+  return CropperConstructor
+}
 
 // Función para activar el input de archivo
 const triggerFileInput = () => {
@@ -389,19 +513,23 @@ const loadImage = (file) => {
     
     // Inicializar Cropper en el próximo tick
     setTimeout(() => {
-      initCropper()
+      void initCropper()
     }, 100)
   }
   reader.readAsDataURL(file)
 }
 
 // Inicializar Cropper
-const initCropper = () => {
+const initCropper = async () => {
   if (cropper) {
     cropper.destroy()
   }
   
   if (cropperImage.value) {
+    const Cropper = await loadCropper()
+
+    if (!cropperImage.value || !imageLoaded.value) return
+
     cropper = new Cropper(cropperImage.value, {
       aspectRatio: 1,
       viewMode: 1,
