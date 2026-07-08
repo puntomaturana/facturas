@@ -11,37 +11,48 @@
       </div>
     </header>
 
-    <main class="mx-auto w-full max-w-[1180px] px-4 pt-12 md:pt-16">
-      <section class="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
-        <div class="animate-fade-in">
+    <main class="mx-auto w-full max-w-[1180px] px-4 pt-10 md:pt-14">
+      <section class="grid gap-8 lg:grid-cols-[0.78fr_1.22fr] lg:items-start">
+        <div class="animate-fade-in lg:sticky lg:top-28">
           <p class="mb-4 text-sm font-bold uppercase tracking-[0.14em] text-[var(--coral)]">
-            Herramienta
+            Herramienta SII
           </p>
-          <h1 class="max-w-3xl text-[clamp(2.35rem,5.3vw,4rem)] font-[760] leading-[1.02] tracking-normal text-[var(--ink)]">
+          <h1 class="max-w-3xl text-[clamp(2.25rem,4.7vw,3.75rem)] font-[760] leading-[1.03] tracking-normal text-[var(--ink)]">
             Prepara tu logo para el facturador electrónico del SII
           </h1>
-          <p class="mt-6 max-w-2xl text-[1.18rem] leading-[1.58] text-[#3f4856]">
-            Recorta y comprime una imagen para dejarla en JPG, 120×120 píxeles y bajo 10KB.
+          <p class="mt-6 max-w-[36rem] text-[1.08rem] leading-[1.65] text-[#3f4856]">
+            Recorta, encuadra y comprime una imagen para dejarla en JPG, 120×120 píxeles y bajo 10KB.
           </p>
+
+          <dl class="mt-8 grid border-y border-[rgba(19,40,75,0.16)] text-sm text-[var(--stone)] sm:grid-cols-3 sm:divide-x sm:divide-[rgba(19,40,75,0.16)]">
+            <div class="py-4 sm:pr-4">
+              <dt class="mb-1 text-xs uppercase tracking-[0.14em] text-[var(--stone)]">Formato</dt>
+              <dd class="font-bold text-[var(--ink)]">JPG</dd>
+            </div>
+            <div class="border-t border-[rgba(19,40,75,0.16)] py-4 sm:border-t-0 sm:px-4">
+              <dt class="mb-1 text-xs uppercase tracking-[0.14em] text-[var(--stone)]">Dimensión</dt>
+              <dd class="font-bold text-[var(--ink)]">120×120 px</dd>
+            </div>
+            <div class="border-t border-[rgba(19,40,75,0.16)] py-4 sm:border-t-0 sm:pl-4">
+              <dt class="mb-1 text-xs uppercase tracking-[0.14em] text-[var(--stone)]">Peso</dt>
+              <dd class="font-bold text-[var(--ink)]">menos de 10KB</dd>
+            </div>
+          </dl>
+
+          <a
+            href="https://www.sii.cl/portales/mipyme/administracion_datos/Guia_Cambiar_Logo.html"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="mt-6 inline-flex items-center gap-2 text-sm font-bold text-[var(--blue-deep)] hover:text-[var(--coral-strong)] hover:underline"
+          >
+            Ver guía oficial del SII
+            <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 17L17 7M17 7H8m9 0v9" />
+            </svg>
+          </a>
         </div>
 
-        <div class="grid gap-3 border-t border-[rgba(19,40,75,0.16)] pt-6 text-sm text-[var(--stone)] md:grid-cols-3 lg:border-t-0 lg:border-l lg:pl-8 lg:pt-0">
-          <div>
-            <p class="mb-1 text-xs uppercase tracking-[0.14em] text-[var(--stone)]">Formato</p>
-            <p class="font-bold text-[var(--ink)]">JPG</p>
-          </div>
-          <div>
-            <p class="mb-1 text-xs uppercase tracking-[0.14em] text-[var(--stone)]">Dimensión</p>
-            <p class="font-bold text-[var(--ink)]">120×120 px</p>
-          </div>
-          <div>
-            <p class="mb-1 text-xs uppercase tracking-[0.14em] text-[var(--stone)]">Peso</p>
-            <p class="font-bold text-[var(--ink)]">menos de 10KB</p>
-          </div>
-        </div>
-      </section>
-
-    <div class="mx-auto mt-12 max-w-6xl">
+      <section aria-label="Optimizador de logo" class="animate-slide-up">
       <div v-if="!imageLoaded" class="mb-8 animate-slide-up">
         <div
           @drop.prevent="handleDrop"
@@ -49,9 +60,9 @@
           @dragenter.prevent="isDragging = true"
           @dragleave.prevent="isDragging = false"
           :class="[
-            'relative overflow-hidden rounded-[8px] border p-8 text-center transition-all duration-300 cursor-pointer md:p-14',
+            'relative overflow-hidden rounded-[8px] border p-8 text-center transition-all duration-300 cursor-pointer md:min-h-[430px] md:p-14',
             isDragging 
-              ? 'border-[var(--coral)] bg-white shadow-[0_24px_80px_rgba(19,40,75,0.12)]' 
+              ? 'border-[var(--coral)] bg-white shadow-[0_18px_55px_rgba(19,40,75,0.12)]' 
               : 'border-[rgba(19,40,75,0.16)] bg-white hover:border-[var(--coral)]'
           ]"
           @click="triggerFileInput"
@@ -120,7 +131,7 @@
       </div>
 
       <div v-if="imageLoaded && !optimizedImage" class="animate-slide-up">
-        <div class="overflow-hidden rounded-[8px] border border-[rgba(19,40,75,0.16)] bg-white shadow-[0_24px_80px_rgba(19,40,75,0.10)]">
+        <div class="overflow-hidden rounded-[8px] border border-[rgba(19,40,75,0.16)] bg-white shadow-[0_18px_55px_rgba(19,40,75,0.10)]">
           <div class="bg-[var(--blue-deep)] px-6 py-5 md:px-8">
             <h2 class="flex items-center gap-3 text-xl font-bold text-white md:text-2xl">
               <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -162,7 +173,7 @@
       </div>
 
       <div v-if="optimizedImage" class="animate-slide-up">
-        <div class="overflow-hidden rounded-[8px] border border-[rgba(19,40,75,0.16)] bg-white shadow-[0_24px_80px_rgba(19,40,75,0.10)]">
+        <div class="overflow-hidden rounded-[8px] border border-[rgba(19,40,75,0.16)] bg-white shadow-[0_18px_55px_rgba(19,40,75,0.10)]">
           <div class="bg-[var(--blue-deep)] px-6 py-5 md:px-8">
             <div class="flex items-center gap-3">
               <div class="flex h-11 w-11 items-center justify-center border border-white/25 bg-white/10">
@@ -309,9 +320,10 @@
           </div>
         </div>
       </div>
-    </div>
+      </section>
+    </section>
 
-    <section class="mt-16" aria-labelledby="guia-logo-sii">
+    <section class="mt-20" aria-labelledby="guia-logo-sii">
       <div class="grid lg:grid-cols-[1.1fr_0.9fr] gap-10 items-start">
         <div>
           <div class="mb-8 rounded-[8px] border-l-2 border-[var(--coral)] bg-white p-5 shadow-[0_24px_80px_rgba(19,40,75,0.06)]">
